@@ -1,6 +1,7 @@
 package main
 
 import (
+	dayOne "./DayOne"
 	"bufio"
 	"fmt"
 	"io/ioutil"
@@ -46,6 +47,9 @@ func readFilesFromDirectory() []string {
 
 func handleInput(input string) {
 	switch input {
+	case "DayOne":
+		dayOne.ExecuteDayOne()
+		break
 	case "Exit":
 		os.Exit(10)
 		break
