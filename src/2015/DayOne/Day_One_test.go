@@ -1,4 +1,4 @@
-package DayOne
+package dayone
 
 import "testing"
 
@@ -56,5 +56,3 @@ func TestGetFloorScenarioFive(t *testing.T) {
 		t.Errorf("Incorrect, Result was %v", secondResult)
 	}
 }
-
-
