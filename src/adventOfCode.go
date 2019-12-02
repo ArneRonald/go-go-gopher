@@ -1,7 +1,6 @@
 package main
 
 import (
-	dayOne "./DayOne"
 	"bufio"
 	"fmt"
 	"io/ioutil"
@@ -9,6 +8,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	dayOne "./2015/DayOne"
 )
 
 func main() {
