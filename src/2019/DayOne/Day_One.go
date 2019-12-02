@@ -9,7 +9,8 @@ import (
 	"strconv"
 )
 
-func executeDayOne() {
+//ExecuteDayOne ...
+func ExecuteDayOne() {
 	file, err := os.Open("input.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -30,6 +31,7 @@ func executeDayOne() {
 	fmt.Println(totalFuel)
 }
 
+//HandleFuel ...
 func HandleFuel(fuel float64) int {
 	var totalFuel int = 0
 	var tempFuel int = int(fuel)
@@ -44,6 +46,7 @@ func HandleFuel(fuel float64) int {
 	return totalFuel
 }
 
+//CalculateFuelNeeded ...
 func CalculateFuelNeeded(moduleMass float64) int {
 	var fuelNeeded = 0
 	var tempFuel float64 = 0
