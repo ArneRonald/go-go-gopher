@@ -1,34 +1,36 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
-	"strconv"
 	"strings"
 
-	dayOne "./2015/DayOne"
+	_2015_dayOne "./2015/DayOne"
+	_2019_dayTwo "./2019/DayTwo"
 )
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
-	directory := readFilesFromDirectory()
-	for {
-		fmt.Println("Which day do you want to run?")
-		for i, f := range directory {
-			fmt.Printf("%v: %v\r\n", i+1, f)
-		}
-		fmt.Print("->")
-		text, _ := reader.ReadString('\n')
-		text = strings.Replace(text, "\n", "", -1)
-		i, err := strconv.ParseInt(text, 10, 64)
-		if err != nil {
-			log.Fatal(err)
-		}
-		handleInput(directory[i-1])
-	}
+	// reader := bufio.NewReader(os.Stdin)
+	// directory := readFilesFromDirectory()
+	// for {
+	// 	fmt.Println("Which day do you want to run?")
+	// 	for i, f := range directory {
+	// 		fmt.Printf("%v: %v\r\n", i+1, f)
+	// 	}
+	// 	fmt.Print("->")
+	// 	text, _ := reader.ReadString('\n')
+	// 	text = strings.Replace(text, "\n", "", -1)
+	// 	i, err := strconv.ParseInt(text, 10, 64)
+	// 	if err != nil {
+	// 		log.Fatal(err)
+	// 	}
+	// 	handleInput(directory[i-1])
+	// }
+
+	_2019_dayTwo.ExecuteDayTwo()
+
 }
 
 func readFilesFromDirectory() []string {
@@ -49,7 +51,7 @@ func readFilesFromDirectory() []string {
 func handleInput(input string) {
 	switch input {
 	case "DayOne":
-		dayOne.ExecuteDayOne()
+		_2015_dayOne.ExecuteDayOne()
 		break
 	case "Exit":
 		os.Exit(10)
