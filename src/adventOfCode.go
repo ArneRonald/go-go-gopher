@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	_2015_dayOne "./2015/DayOne"
-	_2019_dayTwo "./2019/DayTwo"
+	_2019_dayThree "./2019/DayThree"
 )
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 	// 	handleInput(directory[i-1])
 	// }
 
-	_2019_dayTwo.ExecuteDayTwo()
+	_2019_dayThree.ExecuteDayThree()
 
 }
 
