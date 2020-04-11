@@ -13,7 +13,7 @@ import (
 //ExecuteDayTwo ...
 func ExecuteDayTwo() {
 	dir, err := os.Getwd()
-	file, err := os.Open(dir + "\\2015\\DayTwo\\input.txt")
+	file, err := os.Open(dir + "/2015/DayTwo/input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -24,8 +24,8 @@ func ExecuteDayTwo() {
 	for scanner.Scan() {
 		result = calculateSquareFeet(scanner.Text(), result)
 	}
-	fmt.Printf("The total square feer of paper %v", result.squareFeet)
-	fmt.Printf("The total feet of Ribbon: %v", result.ribbonLength)
+	fmt.Println("The total square feet of paper:", result.squareFeet)
+	fmt.Println("The total feet of Ribbon:", result.ribbonLength)
 }
 
 type dimentions struct {

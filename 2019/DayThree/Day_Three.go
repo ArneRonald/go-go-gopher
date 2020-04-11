@@ -18,7 +18,7 @@ type coords struct {
 //ExecuteDayThree ...
 func ExecuteDayThree() {
 	dir, err := os.Getwd()
-	file, err := os.Open(dir + "\\2019\\DayThree\\input.txt")
+	file, err := os.Open(dir + "/2019/DayThree/input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -38,7 +38,7 @@ func ExecuteDayThree() {
 			inputArrTwo = strings.Split(scanner.Text(), ",")
 		}
 	}
-	fmt.Printf("Distance: %v", FindIntersection(inputArrOne, inputArrTwo))
+	fmt.Println("Distance:", FindIntersection(inputArrOne, inputArrTwo))
 }
 
 //FindIntersection ...

@@ -11,7 +11,7 @@ import (
 //ExecuteDayThree ...
 func ExecuteDayThree() {
 	dir, err := os.Getwd()
-	file, err := os.Open(dir + "\\2015\\DayThree\\input.txt")
+	file, err := os.Open(dir + "/2015/DayThree/input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

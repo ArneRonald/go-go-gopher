@@ -12,7 +12,7 @@ const size = 16
 
 //ExecuteDayFour ...
 func ExecuteDayFour() {
-	fmt.Printf("The Trailing Decimals are: %v", findInput("yzbqklnj"))
+	fmt.Println("The Trailing Decimals are:", findInput("yzbqklnj"))
 }
 
 func findInput(input string) (trailingDecimal int) {

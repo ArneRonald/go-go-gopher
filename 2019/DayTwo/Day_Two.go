@@ -17,7 +17,7 @@ func ConvertOptCode(optCode []int) []int {
 	var pointer int = 0
 	for true {
 		if optCode[pointer] == 99 {
-			fmt.Printf("Exit Code reached at position: %v\n", pointer)
+			// fmt.Printf("Exit Code reached at position: %v\n", pointer)
 			break
 		}
 		firstNumPos := optCode[pointer+1]
