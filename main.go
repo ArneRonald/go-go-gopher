@@ -1,7 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io/ioutil"
+	"os"
+	"strconv"
+	"strings"
 
 	twentyFifteenDayFour "github.com/ArneRonald/go-go-gopher/2015/DayFour"
 	twentyFifteenDayOne "github.com/ArneRonald/go-go-gopher/2015/DayOne"
@@ -14,33 +19,132 @@ import (
 )
 
 func main() {
-	fmt.Println("---Executing 2015 day one solution---")
-	twentyFifteenDayOne.ExecuteDayOne()
-	fmt.Println("---Finished 2015 day one solution--- \n")
+	currentDir := "./"
+	reader := bufio.NewReader(os.Stdin)
+	rootDir := true
+	for {
+		if currentDir == "./" || currentDir == "." {
+			rootDir = true
+		} else {
+			rootDir = false
+		}
+		challenges := readFilesFromDirectory(currentDir, rootDir)
+		if len(challenges) < 3 {
+			currentDir = makeMenuSelection(currentDir)
+			challenges = readFilesFromDirectory(currentDir, rootDir)
+		}
+		for i, challenge := range challenges {
+			if i == 0 {
+				continue
+			}
+			fmt.Printf("%v: %v\n", i, challenge)
+		}
+		fmt.Printf("%v: %v\n", 0, challenges[0])
+		fmt.Print("->")
 
-	fmt.Println("---Executing 2015 day two solution---")
-	twentyFifteenDayTwo.ExecuteDayTwo()
-	fmt.Println("---Finished 2015 day two solution---\n")
+		input, _ := reader.ReadString('\n')
+		input = strings.Replace(input, "\n", "", -1)
 
-	fmt.Println("---Executing 2015 day three solution---")
-	twentyFifteenDayThree.ExecuteDayThree()
-	fmt.Println("---Finished 2015 day three solution---\n")
+		selectedOption, err := strconv.Atoi(input)
+		if err != nil {
+			fmt.Errorf(err.Error())
+		}
+		if selectedOption == 0 {
+			break
+		}
 
-	fmt.Println("---Executing 2015 day four solution---")
-	twentyFifteenDayFour.ExecuteDayFour()
-	fmt.Println("---Finished 2015 day four solution---\n")
+		currentDir = handleUserInput(currentDir, selectedOption, challenges)
+	}
+	fmt.Println("Thanks for playing")
+}
 
-	fmt.Println("---Executing 2019 day one solution---")
-	twentyNineteenDayOne.ExecuteDayOne()
-	fmt.Println("---Finished 2019 day one solution---\n")
+func handleUserInput(currentDir string, selectedOption int, menu []string) string {
+	if menu[selectedOption] == "Previous" {
+		menuArr := strings.Split(currentDir, "/")
+		currentDir = ""
+		for i := 0; i < len(menuArr)-1; i++ {
+			if menuArr[i] == "." {
+				currentDir = currentDir + "."
+			} else {
+				currentDir = currentDir + "/" + menuArr[i]
+			}
+		}
+		return currentDir
+	}
+	if currentDir != "./" {
+		return currentDir + "/" + menu[selectedOption]
 
-	fmt.Println("---Executing 2019 day two solution---")
-	twentyNineteenDayTwo.ExecuteDayTwo()
-	fmt.Println("---Finished 2019 day two solution---\n")
+	}
+	return currentDir + menu[selectedOption]
 
-	fmt.Println("---Executing 2019 day three solution---")
-	twentyNineteenDayThree.ExecuteDayThree()
-	fmt.Println("---Finished 2019 day three solution---\n")
+}
 
-	fmt.Println("Done!")
+func readFilesFromDirectory(dir string, rootDir bool) []string {
+	challenges := []string{}
+	files, err := ioutil.ReadDir(dir)
+
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+
+	challenges = append(challenges, "Exit")
+
+	for _, file := range files {
+		if file.IsDir() && file.Name() != ".git" {
+			challenges = append(challenges, file.Name())
+		}
+	}
+
+	if !rootDir {
+		challenges = append(challenges, "Previous")
+	}
+
+	return challenges
+}
+
+func clearScreen() {
+	print("\033[H\033[2J")
+}
+
+func makeMenuSelection(choice string) string {
+	switch choice {
+	case "./2015/DayOne":
+		fmt.Println("---Executing 2015 day one solution---")
+		twentyFifteenDayOne.ExecuteDayOne()
+		fmt.Println("---Finished 2015 day one solution--- \n")
+	case "./2015/DayTwo":
+		fmt.Println("---Executing 2015 day two solution---")
+		twentyFifteenDayTwo.ExecuteDayTwo()
+		fmt.Println("---Finished 2015 day two solution---\n")
+	case "./2015/DayThree":
+		fmt.Println("---Executing 2015 day three solution---")
+		twentyFifteenDayThree.ExecuteDayThree()
+		fmt.Println("---Finished 2015 day three solution---\n")
+	case "./2015/DayFour":
+		fmt.Println("---Executing 2015 day four solution---")
+		twentyFifteenDayFour.ExecuteDayFour()
+		fmt.Println("---Finished 2015 day four solution---\n")
+	case "./2019/DayOne":
+		fmt.Println("---Executing 2019 day one solution---")
+		twentyNineteenDayOne.ExecuteDayOne()
+		fmt.Println("---Finished 2019 day one solution---\n")
+	case "./2019/DayTwo":
+		fmt.Println("---Executing 2019 day two solution---")
+		twentyNineteenDayTwo.ExecuteDayTwo()
+		fmt.Println("---Finished 2019 day two solution---\n")
+	case "./2019/Daythree":
+		fmt.Println("---Executing 2019 day three solution---")
+		twentyNineteenDayThree.ExecuteDayThree()
+		fmt.Println("---Finished 2019 day three solution---\n")
+	}
+	menuArr := strings.Split(choice, "/")
+	currentDir := ""
+	for i := 0; i < len(menuArr)-1; i++ {
+		if menuArr[i] == "." {
+			currentDir = currentDir + "."
+		} else {
+			currentDir = currentDir + "/" + menuArr[i]
+		}
+	}
+	return currentDir
 }
