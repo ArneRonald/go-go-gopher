@@ -49,10 +49,10 @@ func TestContainsRestrictedWords(t *testing.T) {
 
 func TestDetermineNaughtyOrNice(t *testing.T) {
 	if !determineNaughtyOrNice("ugknbfddgicrmopn") {
-		t.Errorf("Name conforms to nice but was returnedas Naughty")
+		t.Errorf("Name conforms to nice but was returned as Naughty")
 	}
 	if !determineNaughtyOrNice("aaa") {
-		t.Errorf("Name conforms to nice but was returnedas Naughty")
+		t.Errorf("Name conforms to nice but was returned as Naughty")
 	}
 	if determineNaughtyOrNice("jchzalrnumimnmhp") {
 		t.Errorf("Name conforms to Naughty but was returned as Nice")
@@ -62,5 +62,47 @@ func TestDetermineNaughtyOrNice(t *testing.T) {
 	}
 	if determineNaughtyOrNice("dvszwmarrgswjxmb") {
 		t.Errorf("Name conforms to Naughty but was returned as Nice")
+	}
+}
+
+func TestDetermineNaughtyOrNiceNew(t *testing.T) {
+	if !determineNaughtyOrNiceNew("qjhvhtzxzqqjkmpb") {
+		t.Errorf("Name conforms to nice but was returned as Naughty")
+	}
+	if !determineNaughtyOrNiceNew("xxyxx") {
+		t.Errorf("Name conforms to nice but was returned as Naughty")
+	}
+	if determineNaughtyOrNiceNew("uurcxstgmygtbstg") {
+		t.Errorf("Name conforms to naughty but was returned as nice")
+	}
+	if determineNaughtyOrNiceNew("ieodomkazucvgmuy") {
+		t.Errorf("Name conforms to naughty but was returned as nice")
+	}
+}
+
+func TestContainsPairOfTwoLetters(t *testing.T) {
+	if !containsPairOfTwoLetters("xyxy") {
+		t.Errorf("Expected true but returned false")
+	}
+	if !containsPairOfTwoLetters("aabcdefgaa") {
+		t.Errorf("Expected true but returned false")
+	}
+	if containsPairOfTwoLetters("aaa") {
+		t.Errorf("Expected false but returned true")
+	}
+}
+
+func TestContainsRepeatingLettersWithOneInbetween(t *testing.T) {
+	if !containsRepeatingLettersWithOneInbetween("xyx") {
+		t.Errorf("Expected true but returned false")
+	}
+	if !containsRepeatingLettersWithOneInbetween("abcdefeghi") {
+		t.Errorf("Expected true but returned false")
+	}
+	if !containsRepeatingLettersWithOneInbetween("aaa") {
+		t.Errorf("Expected true but returned false")
+	}
+	if containsRepeatingLettersWithOneInbetween("rtyd") {
+		t.Errorf("Expected false but returned true")
 	}
 }

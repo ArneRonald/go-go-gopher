@@ -21,13 +21,50 @@ func ExecuteDayFive() {
 	amount := 0
 
 	for scanner.Scan() {
-		if determineNaughtyOrNice(scanner.Text()) {
+		if determineNaughtyOrNiceNew(scanner.Text()) {
 			amount++
 		}
 	}
 	fmt.Println("The amount of Nice names on the list were:", amount)
 }
 
+func determineNaughtyOrNiceNew(name string) (nice bool) {
+	nice = false
+	if containsPairOfTwoLetters(name) && containsRepeatingLettersWithOneInbetween(name) {
+		nice = true
+	}
+	return
+}
+
+func containsPairOfTwoLetters(name string) bool {
+	chars := strings.Split(name, "")
+	for i := 0; i < len(chars); i++ {
+		if i+1 == len(chars) {
+			return false
+		}
+		a := chars[i] + chars[i+1]
+		removed := strings.Replace(name, a, "", 1)
+		if strings.Contains(removed, a) {
+			return true
+		}
+	}
+	return false
+}
+
+func containsRepeatingLettersWithOneInbetween(name string) bool {
+	chars := strings.Split(name, "")
+	for i := 0; i < len(chars); i++ {
+		if i+2 == len(chars) {
+			return false
+		}
+		if chars[i] == chars[i+2] {
+			return true
+		}
+	}
+	return false
+}
+
+//Deprecated: Rather use determineNaughtyOrNiceNew instead
 func determineNaughtyOrNice(name string) (nice bool) {
 	nice = false
 	if containsThreeVowels(name) && containsOneLetterThatAppearsTwiceInARow(name) && !containRestrictedWords(name) {
@@ -36,6 +73,7 @@ func determineNaughtyOrNice(name string) (nice bool) {
 	return
 }
 
+//Deprecated: As some of the rules changed we are deprectating this
 func containsThreeVowels(name string) bool {
 	vowels := map[string]int{"a": 0, "e": 0, "i": 0, "o": 0, "u": 0}
 	for _, char := range strings.Split(name, "") {
@@ -53,6 +91,7 @@ func containsThreeVowels(name string) bool {
 	return false
 }
 
+//Deprecated: As some of the rules changed we are deprectating this
 func containsOneLetterThatAppearsTwiceInARow(name string) bool {
 	previousChar := ""
 	for _, char := range strings.Split(name, "") {
@@ -64,6 +103,7 @@ func containsOneLetterThatAppearsTwiceInARow(name string) bool {
 	return false
 }
 
+//Deprecated: As some of the rules changed we are deprectating this
 func containRestrictedWords(name string) bool {
 	restrictedWords := []string{"ab", "cd", "pq", "xy"}
 	for _, restrictedWord := range restrictedWords {
