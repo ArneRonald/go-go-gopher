@@ -1,4 +1,4 @@
-package dayone
+package daytwo
 
 import "testing"
 

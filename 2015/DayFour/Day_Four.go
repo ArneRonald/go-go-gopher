@@ -1,4 +1,4 @@
-package dayone
+package dayfour
 
 import (
 	"crypto/md5"
