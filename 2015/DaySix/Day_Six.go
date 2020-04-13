@@ -24,9 +24,10 @@ func ExecuteDaySix() {
 	for scanner.Scan() {
 		decorations = handleInput(scanner.Text(), decorations)
 	}
-	litAmount := calculateLitLights(decorations)
-	fmt.Println("The amount of lit lights are :", litAmount)
-
+	// litAmount := calculateLitLights(decorations)
+	// fmt.Println("The amount of lit lights are :", litAmount)
+	brightness := calculateBrightness(decorations)
+	fmt.Println("The brightness of the decorations is", brightness)
 }
 
 type coords struct {
@@ -62,29 +63,33 @@ func flipSwitches(decorations [][]int, function string, startCoord coords, endCo
 	case "on":
 		for row := startCoord.x; row < endCoord.x; row++ {
 			for column := startCoord.y; column < endCoord.y; column++ {
-				decorations[row][column] = 1
+				decorations[row][column]++
 			}
 		}
 		break
 	case "off":
 		for row := startCoord.x; row < endCoord.x; row++ {
 			for column := startCoord.y; column < endCoord.y; column++ {
-				decorations[row][column] = 0
+				if decorations[row][column] > 0 {
+					decorations[row][column]--
+				}
 			}
 		}
 		break
 	case "toggle":
 		for row := startCoord.x; row < endCoord.x; row++ {
 			for column := startCoord.y; column < endCoord.y; column++ {
-				switch decorations[row][column] {
-				case 0:
-					decorations[row][column] = 1
-					break
-				case 1:
-					decorations[row][column] = 0
-					break
-				}
+				// 	switch decorations[row][column] {
+				// 	case 0:
+				// 		decorations[row][column] = 1
+				// 		break
+				// 	case 1:
+				// 		decorations[row][column] = 0
+				// 		break
+				// 	}
+				decorations[row][column] = decorations[row][column] + 2
 			}
+
 		}
 		break
 	}
@@ -107,7 +112,15 @@ func buildCoordinate(input string) (startCoord coords, endCoord coords) {
 	endCoord = coords{x: endX + 1, y: endY + 1}
 	return
 }
-
+func calculateBrightness(decorations [][]int) (brightness int) {
+	brightness = 0
+	for row := 0; row < len(decorations); row++ {
+		for column := 0; column < len(decorations[row]); column++ {
+			brightness = brightness + decorations[row][column]
+		}
+	}
+	return
+}
 func calculateLitLights(decorations [][]int) (lit int) {
 	lit = 0
 	for row := 0; row < len(decorations); row++ {

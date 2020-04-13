@@ -46,3 +46,20 @@ func TestLitLightsThree(t *testing.T) {
 		t.Errorf("Was expecting 4 but returned %v", lit)
 	}
 }
+
+func TestLitLightsScenarioTwoOne(t *testing.T) {
+	emptyBoard := generateBlankScreen(1000)
+	newBoard := handleInput("turn on 0,0 through 0,0", emptyBoard)
+	lit := calculateBrightness(newBoard)
+	if lit != 1 {
+		t.Errorf("Was expecting 1 but returned %v", lit)
+	}
+}
+func TestLitLightsScenarioTwoTwo(t *testing.T) {
+	emptyBoard := generateBlankScreen(1000)
+	newBoard := handleInput("toggle 0,0 through 999,999", emptyBoard)
+	lit := calculateBrightness(newBoard)
+	if lit != 2000000 {
+		t.Errorf("Was expecting 2000000 but returned %v", lit)
+	}
+}
