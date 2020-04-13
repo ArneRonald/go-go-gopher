@@ -11,6 +11,7 @@ import (
 	twentyFifteenDayFive "github.com/ArneRonald/go-go-gopher/2015/DayFive"
 	twentyFifteenDayFour "github.com/ArneRonald/go-go-gopher/2015/DayFour"
 	twentyFifteenDayOne "github.com/ArneRonald/go-go-gopher/2015/DayOne"
+	twentyFifteenDaySix "github.com/ArneRonald/go-go-gopher/2015/DaySix"
 	twentyFifteenDayThree "github.com/ArneRonald/go-go-gopher/2015/DayThree"
 	twentyFifteenDayTwo "github.com/ArneRonald/go-go-gopher/2015/DayTwo"
 
@@ -129,6 +130,10 @@ func makeMenuSelection(choice string) string {
 		fmt.Println("---Executing 2015 day five solution---")
 		twentyFifteenDayFive.ExecuteDayFive()
 		fmt.Println("---Finished 2015 day five solution---\n")
+	case "./2015/DaySix":
+		fmt.Println("---Executing 2015 day six solution---")
+		twentyFifteenDaySix.ExecuteDaySix()
+		fmt.Println("---Finished 2015 day six solution---\n")
 	case "./2019/DayOne":
 		fmt.Println("---Executing 2019 day one solution---")
 		twentyNineteenDayOne.ExecuteDayOne()
