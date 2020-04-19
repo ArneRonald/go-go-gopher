@@ -11,6 +11,7 @@ import (
 	twentyFifteenDayFive "github.com/ArneRonald/go-go-gopher/2015/DayFive"
 	twentyFifteenDayFour "github.com/ArneRonald/go-go-gopher/2015/DayFour"
 	twentyFifteenDayOne "github.com/ArneRonald/go-go-gopher/2015/DayOne"
+	twentyFifteenDaySeven "github.com/ArneRonald/go-go-gopher/2015/DaySeven"
 	twentyFifteenDaySix "github.com/ArneRonald/go-go-gopher/2015/DaySix"
 	twentyFifteenDayThree "github.com/ArneRonald/go-go-gopher/2015/DayThree"
 	twentyFifteenDayTwo "github.com/ArneRonald/go-go-gopher/2015/DayTwo"
@@ -113,39 +114,43 @@ func makeMenuSelection(choice string) string {
 	case "./2015/DayOne":
 		fmt.Println("---Executing 2015 day one solution---")
 		twentyFifteenDayOne.ExecuteDayOne()
-		fmt.Println("---Finished 2015 day one solution--- \n")
+		fmt.Println("---Finished 2015 day one solution---")
 	case "./2015/DayTwo":
 		fmt.Println("---Executing 2015 day two solution---")
 		twentyFifteenDayTwo.ExecuteDayTwo()
-		fmt.Println("---Finished 2015 day two solution---\n")
+		fmt.Println("---Finished 2015 day two solution---")
 	case "./2015/DayThree":
 		fmt.Println("---Executing 2015 day three solution---")
 		twentyFifteenDayThree.ExecuteDayThree()
-		fmt.Println("---Finished 2015 day three solution---\n")
+		fmt.Println("---Finished 2015 day three solution---")
 	case "./2015/DayFour":
 		fmt.Println("---Executing 2015 day four solution---")
 		twentyFifteenDayFour.ExecuteDayFour()
-		fmt.Println("---Finished 2015 day four solution---\n")
+		fmt.Println("---Finished 2015 day four solution---")
 	case "./2015/DayFive":
 		fmt.Println("---Executing 2015 day five solution---")
 		twentyFifteenDayFive.ExecuteDayFive()
-		fmt.Println("---Finished 2015 day five solution---\n")
+		fmt.Println("---Finished 2015 day five solution---")
 	case "./2015/DaySix":
 		fmt.Println("---Executing 2015 day six solution---")
 		twentyFifteenDaySix.ExecuteDaySix()
-		fmt.Println("---Finished 2015 day six solution---\n")
+		fmt.Println("---Finished 2015 day six solution---")
+	case "./2015/DaySeven":
+		fmt.Println("---Executing 2015 day seven solution---")
+		twentyFifteenDaySeven.ExecuteDaySix()
+		fmt.Println("---Finished 2015 day seven solution---")
 	case "./2019/DayOne":
 		fmt.Println("---Executing 2019 day one solution---")
 		twentyNineteenDayOne.ExecuteDayOne()
-		fmt.Println("---Finished 2019 day one solution---\n")
+		fmt.Println("---Finished 2019 day one solution---")
 	case "./2019/DayTwo":
 		fmt.Println("---Executing 2019 day two solution---")
 		twentyNineteenDayTwo.ExecuteDayTwo()
-		fmt.Println("---Finished 2019 day two solution---\n")
+		fmt.Println("---Finished 2019 day two solution---")
 	case "./2019/Daythree":
 		fmt.Println("---Executing 2019 day three solution---")
 		twentyNineteenDayThree.ExecuteDayThree()
-		fmt.Println("---Finished 2019 day three solution---\n")
+		fmt.Println("---Finished 2019 day three solution---")
 	}
 	menuArr := strings.Split(choice, "/")
 	currentDir := ""
