@@ -1,9 +1,8 @@
 package dayone
 
 import (
-	"bufio"
 	"fmt"
-	"log"
+	"github.com/ArneRonald/go-go-gopher/util"
 	"math"
 	"os"
 	"strconv"
@@ -11,19 +10,12 @@ import (
 
 //ExecuteDayOne ...
 func ExecuteDayOne() {
-	dir, err := os.Getwd()
-	file, err := os.Open(dir + "/2019/DayOne/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-
+	dir, _ := os.Getwd()
+	data := util.ReadFileContents(dir + "/2019/DayOne/input.txt")
 	var totalFuel int = 0
 
-	for scanner.Scan() {
-		mass, err := strconv.ParseFloat(scanner.Text(), 10)
+	for _, line := range data {
+		mass, err := strconv.ParseFloat(line, 10)
 		if err != nil {
 			fmt.Println("Error occured", err)
 		}

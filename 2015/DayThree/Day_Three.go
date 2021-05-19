@@ -1,26 +1,19 @@
 package daythree
 
 import (
-	"bufio"
 	"fmt"
-	"log"
+	"github.com/ArneRonald/go-go-gopher/util"
 	"os"
 	"strings"
 )
 
 //ExecuteDayThree ...
 func ExecuteDayThree() {
-	dir, err := os.Getwd()
-	file, err := os.Open(dir + "/2015/DayThree/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		fmt.Printf("Houses visited: %v\n", calculateHousesVisited(scanner.Text()))
-		fmt.Printf("Houses visited with RoboSanta: %v\n", calculateRoboSanta(scanner.Text()))
+	dir,_ := os.Getwd()
+	data := util.ReadFileContents(dir + "/2015/DayThree/input.txt")
+	for _, line := range data {
+		fmt.Printf("Houses visited: %v\n", calculateHousesVisited(line))
+		fmt.Printf("Houses visited with RoboSanta: %v\n", calculateRoboSanta(line))
 	}
 }
 

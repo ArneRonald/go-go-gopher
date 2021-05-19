@@ -1,9 +1,8 @@
 package daysix
 
 import (
-	"bufio"
 	"fmt"
-	"log"
+	"github.com/ArneRonald/go-go-gopher/util"
 	"os"
 	"strconv"
 	"strings"
@@ -11,18 +10,12 @@ import (
 
 //ExecuteDaySix ...
 func ExecuteDaySix() {
-	dir, err := os.Getwd()
-	file, err := os.Open(dir + "/2015/DaySix/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+	dir, _ := os.Getwd()
+	data := util.ReadFileContents(dir + "/2015/DaySix/input.txt")
 	decorations := generateBlankScreen(1000)
 
-	for scanner.Scan() {
-		decorations = handleInput(scanner.Text(), decorations)
+	for _, line := range data {
+		decorations = handleInput(line, decorations)
 	}
 	// litAmount := calculateLitLights(decorations)
 	// fmt.Println("The amount of lit lights are :", litAmount)

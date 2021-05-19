@@ -1,27 +1,20 @@
 package dayfive
 
 import (
-	"bufio"
 	"fmt"
-	"log"
+	"github.com/ArneRonald/go-go-gopher/util"
 	"os"
 	"strings"
 )
 
 //ExecuteDayFive ...
 func ExecuteDayFive() {
-	dir, err := os.Getwd()
-	file, err := os.Open(dir + "/2015/DayFive/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+	dir,_ := os.Getwd()
+	data := util.ReadFileContents(dir + "/2015/DayFive/input.txt")
 	amount := 0
 
-	for scanner.Scan() {
-		if determineNaughtyOrNiceNew(scanner.Text()) {
+	for _, line := range data {
+		if determineNaughtyOrNiceNew(line) {
 			amount++
 		}
 	}

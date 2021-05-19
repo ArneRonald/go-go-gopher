@@ -1,8 +1,8 @@
 package daytwo
 
 import (
-	"bufio"
 	"fmt"
+	"github.com/ArneRonald/go-go-gopher/util"
 	"log"
 	"os"
 	"sort"
@@ -12,17 +12,11 @@ import (
 
 //ExecuteDayTwo ...
 func ExecuteDayTwo() {
-	dir, err := os.Getwd()
-	file, err := os.Open(dir + "/2015/DayTwo/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+	dir,_ := os.Getwd()
 	result := result{0, 0}
-	for scanner.Scan() {
-		result = calculateSquareFeet(scanner.Text(), result)
+	data := util.ReadFileContents(dir + "/2015/DayTwo/input.txt")
+	for _, line := range data {
+		result = calculateSquareFeet(line, result)
 	}
 	fmt.Println("The total square feet of paper:", result.squareFeet)
 	fmt.Println("The total feet of Ribbon:", result.ribbonLength)

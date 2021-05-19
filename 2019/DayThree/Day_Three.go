@@ -1,9 +1,8 @@
 package daythree
 
 import (
-	"bufio"
 	"fmt"
-	"log"
+	"github.com/ArneRonald/go-go-gopher/util"
 	"math"
 	"os"
 	"strconv"
@@ -17,25 +16,20 @@ type coords struct {
 
 //ExecuteDayThree ...
 func ExecuteDayThree() {
-	dir, err := os.Getwd()
-	file, err := os.Open(dir + "/2019/DayThree/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
+	dir, _ := os.Getwd()
+	data := util.ReadFileContents(dir + "/2019/DayThree/input.txt")
 
 	var inputArrOne []string
 	var inputArrTwo []string
-	scanner := bufio.NewScanner(file)
 	for i := 0; i < i+1; i++ {
-		if !scanner.Scan() {
+		if i > len(data) {
 			break
 		}
 		if i == 0 {
-			inputArrOne = strings.Split(scanner.Text(), ",")
+			inputArrOne = strings.Split(data[i], ",")
 		}
 		if i == 1 {
-			inputArrTwo = strings.Split(scanner.Text(), ",")
+			inputArrTwo = strings.Split(data[i], ",")
 		}
 	}
 	fmt.Println("Distance:", FindIntersection(inputArrOne, inputArrTwo))
