@@ -6,12 +6,16 @@ import (
 	"os"
 )
 
-//ExecuteDaySix ...
-func ExecuteDaySix() {
+//ExecuteDaySeven ...
+func ExecuteDaySeven() {
 	dir, _ := os.Getwd()
-	data := util.ReadFileContents(dir + "/2015/DaySix/input.txt")
+	data := util.ReadFileContents(dir + "/2015/DaySeven/input.txt")
 	for _, line := range data {
 		fmt.Println(line)
 	}
 
+}
+
+func ApplyOperations(data []string) map[string]int {
+	return nil
 }

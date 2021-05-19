@@ -137,7 +137,7 @@ func makeMenuSelection(choice string) string {
 		fmt.Println("---Finished 2015 day six solution---")
 	case "./2015/DaySeven":
 		fmt.Println("---Executing 2015 day seven solution---")
-		twentyFifteenDaySeven.ExecuteDaySix()
+		twentyFifteenDaySeven.ExecuteDaySeven()
 		fmt.Println("---Finished 2015 day seven solution---")
 	case "./2019/DayOne":
 		fmt.Println("---Executing 2019 day one solution---")
